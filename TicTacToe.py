@@ -128,6 +128,5 @@ def main():
             game.player2(turn)
             game.check()
 
-
 if __name__ == "__main__":
     main()
