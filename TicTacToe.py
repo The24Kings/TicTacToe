@@ -64,13 +64,23 @@ class TicTacToe:
         for spot in range(3):
             # Horizontal
             for i in range(3):
-                if self._board[spot*i] == "X":
+                if self._board[(spot * i) - 1] == "X":
                     horizontal += 1
-            pass
 
             # Vertical
+            for i in range(3):
+                if self._board[spot + (3 * (i - 1))] == "X":
+                    vertical += 1
 
             # Diagonal
+            for i in range(3):
+                if self._board[spot + (4 * (i - 1))] == "X":
+                    diagonal += 1
+
+        print("")
+        print(horizontal)
+        print(vertical)
+        print(diagonal)
 
         if horizontal == 3 or vertical == 3 or diagonal == 3:
             return True
@@ -78,10 +88,17 @@ class TicTacToe:
             return False
 
     def player2(self, turn):
+        finding = False
         if turn == 1:
-            self._board[math.floor(uniform(1, 9))] = self._p2
-        else:
-            pass
+            finding = True
+
+        while finding:
+            spot = math.floor(uniform(1, 9))
+            if turn == 1 and self._board[spot] == " ":
+                self._board[spot] = self._p2
+                finding = False
+            else:
+                pass
 
 
 def main():
@@ -98,6 +115,7 @@ def main():
     welcome = open("Welcome.txt", "r")
     print(welcome.read())
 
+    #Loops until player has chosen a correct side
     while choosing:
         game.p1 = input("Pick X or O: ")
         if game.p1 == "X":
@@ -107,6 +125,7 @@ def main():
         elif game.p1 == "O":
             game.p2 = "X"
             choosing = False
+
         else:
             print("\nPlease choose X or O!\n")
 
@@ -127,6 +146,8 @@ def main():
 
             game.player2(turn)
             game.check()
+
+        turn += 1
 
 if __name__ == "__main__":
     main()

@@ -11,11 +11,11 @@
 
 	      1.> Choose X or O
 
-              2.> Select which square you want, shown below
+          2.> Select which square you want, shown below
 
 	      3.> Win!
-            
-            
+
+
 			     1 | 2 | 3 
 			    ---|---|---
 			     4 | 5 | 6 
